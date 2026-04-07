@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="formUsuario">
+        <input type="text" id="nome" placeholder="Digite o nome" required />
+        <button type="submit">Cadastrar</button>
+    </form>
+    <ul id="listaUsuarios"></ul>
+
+    <script>
+        document.getElementById("formUsuario").addEventListener("submit", () => {
+            event.preventDefault()
+            cadastrar()
+        })
+
+        async function cadastrar() {
+
+            let nome = document.getElementById("nome").value
+            console.log(nome)
+            console.log(JSON.stringify({ name: nome }))
+            await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: nome })
+            });
+
+            document.getElementById("nome").value = "";
+            carregarUsuarios();
+        }
+
+        async function carregarUsuarios() {
+            const res = await fetch("http://localhost:3000/users");
+            const usuarios = await res.json();
+            const lista = document.getElementById("listaUsuarios");
+            lista.innerHTML = ""; // Limpa a lista antes de exibir
+            usuarios.forEach(u => {
+                const li = document.createElement("li");
+                li.textContent = u.name;
+                lista.appendChild(li);
+            });
+        }
+        carregarUsuarios();
+
+
+
+    </script>
+</body>
+
+</html>

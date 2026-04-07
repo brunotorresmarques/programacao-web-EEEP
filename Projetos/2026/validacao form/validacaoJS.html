@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .erro {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="nome" placeholder="Nome...">
+        <input type="number" id="idade" placeholder="Idade...">
+
+        <button type="button" onclick="enviar()">Enviar</button>
+        <br>
+        <span id="erro" class="erro"></span>
+    </form>
+
+    <script>
+
+        function enviar() {
+            let nome = document.getElementById('nome').value
+            let idade = document.getElementById('idade').value
+            let msg = document.getElementById('erro')
+            if(nome == "" || nome.trim() == ""){
+                //alert("Preencha seu nome completo!!!")
+                msg.textContent = "Preencha seu nome completo!!!"
+            } else if(idade == "" || idade < 0){
+                //alert("A idade informada é inválida!!")
+                msg.textContent = "A idade informada é inválida!!"
+            }
+        }
+
+    </script>
+</body>
+
+</html>

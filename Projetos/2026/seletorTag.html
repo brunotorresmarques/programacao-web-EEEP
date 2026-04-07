@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .titulos {
+            color: red;
+            font-size: xx-large;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Seletor por Tag</h1>
+    <h1>Teste</h1>
+
+    <script>
+        let elementos = document.getElementsByTagName("h1");
+        console.log("Os elementos da lista são:");
+        for (let i = 0; i < elementos.length; i ++){
+            elementos[i].classList.add("titulos");
+        }
+    </script>
+</body>
+</html>

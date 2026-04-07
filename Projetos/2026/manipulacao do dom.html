@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>DOM</h1>
+    <ul id="lista"></ul>
+
+    <script>
+        let alunos = ["Maria", "José", "Bruno", "Zoin"]
+
+        let lista = document.getElementById('lista')
+
+
+        for (let i = 0; i < alunos.length; i++) {
+            let novoItem = document.createElement('li')
+            novoItem.textContent = alunos[i]
+            lista.appendChild(novoItem)
+        }
+
+        let novoItem = document.createElement('li')
+            novoItem.textContent = "Novo Aluno"
+
+        lista.insertBefore(novoItem, lista.firstChild)
+
+        lista.removeChild(lista.firstChild)
+
+
+    </script>
+</body>
+
+</html>

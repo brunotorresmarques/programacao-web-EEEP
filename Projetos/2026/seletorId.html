@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="titulo">Olá mundo!</p>
+
+    <script>
+        let elemento = document.getElementById('titulo');
+        console.log(elemento);
+
+        elemento.innerText = "Turma Infor 2 2026";
+        elemento.innerHTML = "<em>Italico</em>";
+
+
+        elemento.style.color = "red";
+
+        // Italico: <em></em>
+        // Negrito: <strong></strong>
+    </script>
+</body>
+</html>

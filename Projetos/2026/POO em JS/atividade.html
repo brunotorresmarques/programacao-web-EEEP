@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="nome" placeholder="Nome...">
+        <input type="number" id="cpf" placeholder="___.___.___-__" min="11">
+        <input type="number" id="idade" placeholder="Idade...">
+
+        <button onclick="enviar()" type="button">Enviar</button>
+    </form>
+
+    <script>
+        class Pessoa {
+
+            constructor(nome, cpf, idade){
+                this.nome = nome
+                this.cpf = cpf
+                this.idade = idade
+            }
+
+            exibir(){
+                alert("Nome: "+ this.nome + "\nCPF: " + this.cpf + "\nIdade: "+ this.idade)
+            }
+        }
+
+        function enviar(){
+            let nome = document.getElementById('nome').value 
+            let cpf = document.getElementById('cpf').value 
+            let idade = document.getElementById('idade').value 
+
+            let pessoa = new Pessoa(nome, cpf, idade)
+
+            pessoa.exibir()
+
+            //console.log(nome + "\n" + cpf + "\n" + idade)
+        }
+    </script>
+
+</body>
+</html>

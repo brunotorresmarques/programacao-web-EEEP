@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Over</title>
+
+    <style>
+        .antes {
+            width: 20px;
+        }
+
+        .depois {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="img" class="antes" onmouseover="trocarClasse()"
+        src="https://tse4.mm.bing.net/th/id/OIP.8Tehid-pc8ndMeXQh7WcnwHaFk?rs=1&pid=ImgDetMain&o=7&rm=3" alt="">
+
+    <script>
+        function trocarClasse() {
+            let img = document.getElementById("img");
+            img.classList.remove("antes");
+            img.classList.add("depois");
+        }
+    </script>
+</body>
+
+</html>
