@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./form.css">
+</head>
+
+<body>
+    <div>
+        <form action="">
+
+            <h1>Cadastro</h1>
+
+            <input id="nome" type="text" placeholder="Nome">
+            <input id="cpf" type="number" placeholder="CPF">
+            <input id="senha" type="password" placeholder="Senha">
+            <input id="confsenha" type="password" placeholder="Confirme sua senha">
+
+
+            <button type="button" onclick="cadastro()">Cadastrar</button>
+
+            <p>Já tem conta? <a href="./login.html">Logar</a></p>
+        </form>
+    </div>
+
+
+    <script>
+        async function cadastro() {
+            let nome = document.getElementById("nome").value
+            let cpf = document.getElementById("cpf").value
+            let senha = document.getElementById("senha").value
+            let confsenha = document.getElementById("confsenha").value
+
+            if (senha != confsenha) {
+                alert("As senhas estão diferentes!")
+            } else {
+                let user = {
+                    "nome": nome,
+                    "cpf": cpf,
+                    "senha": confsenha
+                }
+
+                await fetch("http://localhost:3000/usuarios", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(user)
+                })
+                    localStorage.setItem("nome", user.nome)
+                
+                
+            }
+        }
+    </script>
+</body>
+
+</html>

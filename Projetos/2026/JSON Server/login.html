@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./form.css">
+</head>
+
+<body>
+    <div>
+        <form action="">
+            <h1>Login</h1>
+            <input id="cpf" type="number" placeholder="CPF">
+            <input id="senha" type="password" placeholder="Senha">
+
+            <button type="button" onclick="entrar()">Entrar</button>
+
+            <p>Não tem conta? <a href="./cadastro.html">Criar conta</a></p>
+        </form>
+    </div>
+
+    <script>
+
+        async function entrar(){
+            let cpf = document.getElementById("cpf").value
+            let senha = document.getElementById("senha").value
+
+            let res = await fetch("http://localhost:3000/usuarios")
+
+            let users = await res.json()
+
+            console.log(users)
+
+            for(let i = 0; i < users.length; i++){
+                if(users[i].cpf == cpf && users[i].senha == senha){
+                    localStorage.setItem("id", users[i].id)
+                    localStorage.setItem("nome", users[i].nome)
+
+                    window.location.href = "index.html"
+                }
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>

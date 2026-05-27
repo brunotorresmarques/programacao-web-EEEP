@@ -1,0 +1,53 @@
+{
+  "usuarios": [
+    {
+      "nome": "Ana",
+      "cpf": "1234",
+      "senha": "1234",
+      "id": "ky1DaVYihgk"
+    },
+    {
+      "nome": "Bruno",
+      "cpf": "12345",
+      "senha": "12345",
+      "id": "o5LlyFQFzLE"
+    },
+    {
+      "nome": "Brendo",
+      "cpf": "12",
+      "senha": "12",
+      "id": "UtmK3IWh-qI"
+    }
+  ],
+  "notes": [
+    {
+      "titulo": "Teste",
+      "data": "2026-05-21",
+      "desc": "Teste",
+      "idUser": "ky1DaVYihgk",
+      "id": "RVNrt5aESds"
+    },
+    {
+      "titulo": "Tarefa 2",
+      "data": "2026-05-28",
+      "desc": "Entregar o código",
+      "idUser": "ky1DaVYihgk",
+      "id": "NM9RPjnhFnY"
+    },
+    {
+      "titulo": "T3",
+      "data": "2026-05-29",
+      "desc": "iuawudhasud",
+      "idUser": "ky1DaVYihgk",
+      "id": "8KH402lxccc"
+    },
+    {
+      "titulo": "Prova de Web",
+      "data": "2026-06-04",
+      "desc": "Tá todo mundo lascado! Ass. Bruno",
+      "idUser": "ky1DaVYihgk",
+      "id": "6lrmQfaPYzE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

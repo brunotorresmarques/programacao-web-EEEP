@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./form.css">
+</head>
+
+<body>
+    <div>
+        <form action="">
+
+            <h1>Adicionar Anotação</h1>
+
+            <input id="titulo" type="text" placeholder="Título">
+            <input id="data" type="date" placeholder="dd/mm/aaaa">
+            <input id="desc" type="text" placeholder="Descrição">
+
+            <button type="button" onclick="addNote()">Adicionar</button>
+        </form>
+    </div>
+    <script>
+        let id = localStorage.getItem("id")
+
+        if (!id) {
+            window.location.href = "login.html"
+        }
+
+
+        async function addNote() {
+            let nota = {
+                titulo: document.getElementById("titulo").value,
+                data: document.getElementById("data").value,
+                desc: document.getElementById("desc").value,
+                idUser: localStorage.getItem("id")
+            }
+
+            await fetch("http://localhost:3000/notes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(nota)
+            }).then(()=> window.location.href = "index.html")
+
+        }
+    </script>
+
+
+</body>
+
+</html>

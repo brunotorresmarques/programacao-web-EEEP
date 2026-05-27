@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="user">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
+                role="img" width="50" height="50" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                    d="M12 4a4 4 0 1 1 0 8a4 4 0 0 1 0-8m0 16s8 0 8-2c0-2.4-3.9-5-8-5s-8 2.6-8 5c0 2 8 2 8 2"></path>
+            </svg>
+            <h1>Olá, <span id="nomeUser"></span></h1>
+        </div>
+        <button class="sair" onclick="sair()">Sair</button>
+    </div>
+
+    <div class="hero">
+        <button onclick="add()" class="add">Adicionar</button>
+    </div>
+
+    <div class="container">
+        <table class="notes-table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="notes-list">
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+    <script>
+        let id = localStorage.getItem("id")
+        let nome = localStorage.getItem("nome")
+
+        let span = document.getElementById("nomeUser")
+
+        if (!id) {
+            window.location.href = "login.html"
+        }
+
+        span.innerHTML = nome
+
+        function sair() {
+            localStorage.removeItem("id")
+            localStorage.removeItem("nome")
+
+            window.location.href = "login.html"
+        }
+
+        function add() {
+            window.location.href = "addNote.html"
+        }
+
+
+
+        async function carregarDados(){
+            let tabela = document.getElementById("notes-list")
+
+            let res = await fetch(`http://localhost:3000/notes?idUser=${id}`)
+
+            let notes = await res.json()
+
+            console.log(notes)
+
+
+            tabela.innerHTML = ""
+
+            for(let i = 0; i < notes.length; i++){
+                tabela.innerHTML += 
+                `<tr>
+                    <td>${notes[i].titulo}</td>
+                    <td>${notes[i].data}</td>
+                    <td>${notes[i].desc}</td>
+                     <td>
+                        <button class="btn-action btn-edit" onclick="editarNota(${notes[i].id})">Editar</button>
+                        <button class="btn-action btn-delete" onclick="deletarNota(${notes[i].id})">Excluir</button>
+                    </td>
+                </tr>`
+            }
+
+            
+        }
+
+        // Funções de ação
+        function deletarNota(index) {
+            if (confirm("Deseja realmente excluir esta nota?")) {
+                notas.splice(index, 1);
+                localStorage.setItem("notas", JSON.stringify(notas));
+                carregarNotas();
+            }
+        }
+
+        function editarNota(index) {
+            // Redireciona para a página de add com o index (exemplo)
+            window.location.href = `addNote.html?edit=${index}`;
+        }
+
+        // Chama a função ao carregar a página
+        carregarDados();
+
+    </script>
+</body>
+
+</html>
